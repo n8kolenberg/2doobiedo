@@ -6,30 +6,44 @@
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<!-- <script>
+	window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')
+	</script> -->
+
 	<script src="js/jquery-ui/jquery-ui.min.css"></script>
 	<script src="js/jquery-ui/jquery-ui.min.js"></script>
 	<script src="js/app.js"></script>
 </head>
 <body>
-	<section class="intro">
-		<h1 class="title">What2do</h1>
-		<h2> Add a task </h2>
-		<p> You can type a task in the field below and hit enter. Or, click on the + symbol anywhere to add a task for each date category. Drag the items to sort them by priority. 
-		</p>
+	<section class="intro container-fluid">
+		<div class="row">
+			<h1 class="title col-md-12 text-center">What2do</h1>
+			<h2 class="col-md-12 text-center"> Add a task </h2>
+			<p class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6 text-center"> You can type a task in the field below and hit enter. Or, click on the + symbol anywhere to add a task for each date category. Drag the items to sort them by priority. 
+			</p>
+		</div>
 	</section>
 
-	<section class="input">
-		<input type="text" placeholder="Start typing" name="input-field" class="input-field">
-		<input type="submit" value="+" name="input-field" class="submit-btn">
+	<section class="input container-fluid">
+	<div class="row">
+			<form class="inputForm form-inline col-md-12 text-center">
+				<input type="text" placeholder="Start typing" name="input-field" class="input-field form-control">
+				<input type="submit" value="Add" name="input-field" class="submit-btn btn btn-default btn-md btn-primary">
+			</form>
+			<p class="warning col-md-12 text-center">Please add a task first</p>
+			
+	</div>
 	</section>
 
-	<section class="to-do">
-		<h2> Today </h2>
-			<ul id="sortable" class="selectable">
-				<li> Test task 1</li>
-				<li> Test task 2</li>
-				<li> Test task 3</li>
-			</ul>
+	<section class="to-do container-fluid">
+		<div class="row">
+			<h2 class="col-md-12 text-center"> Today </h2>
+				<ul id="sortable" class="selectable col-md-12 text-center">
+					<li> Test task 1</li>
+					<li> Test task 2</li>
+					<li> Test task 3</li>
+				</ul>
+		</div>
 	</section>
 
 
