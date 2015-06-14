@@ -15,6 +15,18 @@ body {
 	background-color: rgba(0, 0, 0, 0);
 }
 
+.completeMark {
+ 
+}
+
+.deleteMark {
+	background-image: url('../img/delete.png');
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+}
+
+
 .btn {
 	margin-top: 10px;
 }
@@ -32,6 +44,7 @@ body {
 	color: grey;
 }
 
+
 /*To add open and close symbol
 for input p
 ===========================*/
@@ -48,6 +61,7 @@ for input p
 	height: 150px;
 }
 
+
 .inputForm {
 	margin: 20px auto 20px;
 }
@@ -57,26 +71,30 @@ for input p
 	display: none;
 }
 
+
 .show {
 	display: block;
 }
 
+.extra::after {
+	content: "== ";
+}
 
 /* Priority Styles 
 ==================================*/
 .hot {
-	color: #D91E18;
-	background-color: #FDE3A7;
+	color: #FFF;
+	background-color: #E74C3C;
 }
 
 .medium {
- 	color: #F9690E;
- 	background-color: #F5D76E;
+ 	color: #E87E04;
+ 	background-color: #FDE3A7;
 }
 
 .chill {
-	color: #3A539B;
- 	background-color: #E4F1FE
+	color: #87D37C;
+ 	background-color: #C8F7C5
 }
 
 /* Completed tasks styles
@@ -86,10 +104,13 @@ for input p
 }
 
 .tasks {
-	color: #D35400;
-	background-color: #FDE3A7;
-	margin-bottom: 1px;
-	font-size: 3rem;
+/*	color: #D35400;
+	background-color: #FDE3A7;*/
+	margin-bottom: 5px;
+	border-radius: 10px;
+	padding: 20px 40px 20px 40px;
+	font-size: 1.65rem;
+	text-align: justify;
 	-webkit-transition: all 100ms ease;
 }
 
@@ -117,8 +138,11 @@ ul#sortable {
 
 
 @media screen and (min-width: 768px) {
+	.tasks {
+		font-size: 2.5rem;
+	}
+
 	.btn {
-		/*padding-bottom: 5px;*/
 		margin-top: 0;
 	}
 }

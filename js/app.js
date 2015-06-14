@@ -4,6 +4,13 @@ $(document).ready( function() {
 //Hide initial warning to add task
 $('.warning').hide();
 
+
+//Add icons for completion and deletion
+var completeMark = '<span class="completeMark"></span>'
+var deleteMark = '<span class="deleteMark"></span>'
+
+
+
 //Make instructions appear and disappear
 $('.intro h3').addClass('close');
 $('.intro h3').on('click', function() {
@@ -22,12 +29,11 @@ $('.intro h3').on('click', function() {
 $('.submit-btn').on('click', function (event){
 	event.preventDefault();
 	var $newTask = $('input:text').val();
-	console.log($);
 	if(!$.trim($newTask)) { 
 		$('.warning').fadeIn(300);
 	} else { 
 		$('.warning').fadeOut(300);
-		$('<li class="tasks" contenteditable="true">'+$newTask+'</li>').prependTo('#sortable')
+		$('<li class="tasks" contenteditable="true">'+ $newTask + completeMark + deleteMark + '</li>').prependTo('#sortable')
 		.css({
 			opacity : 0,
 			marginTop : "-10px"
@@ -36,9 +42,8 @@ $('.submit-btn').on('click', function (event){
 			opacity : 1,
 			marginTop : 0
 		}, 300);
-
-
 		$('input:text').val('')
+		prioritize();
 	} //End if statement
 }); //End on click 
 
@@ -56,9 +61,9 @@ $('.input-field').on('keydown', function (event) {
 //Make the Task List Sortable
 // $(function() {
 // 	$('#sortable').sortable({
-// 		axis : "y"
+// 		axis : "y",
+// 		cancel : ':input, button, [contenteditable]'
 // 	});
-// 	$('#sortable').disableSelection();
 // })// End sortable function
 
 
@@ -84,7 +89,18 @@ $('.delete').on('click', function(event) {
 
 
 //Feature to add priority colors to tasks based on position
-
-
+function prioritize() {
+$('#sortable').children().filter(function(index) {
+	console.log(index);
+	if (index >= 6) {
+		$(this).addClass("chill");
+	} else if (index > 2 && index < 6) {
+		$(this).addClass("medium");
+	} else {
+		$(this).addClass("hot");
+	}
+	return false;
+	}); //End filter
+}
 
 }); //End ready
