@@ -18,8 +18,8 @@
 	<section class="intro container-fluid">
 		<div class="row">
 			<h1 class="title col-md-12 text-center">What2do</h1>
-			<h2 class="col-md-12 text-center"> Add a task </h2>
-			<p class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6 text-center"> You can type a task in the field below and hit enter. Or, click on the + symbol anywhere to add a task for each date category. Drag the items to sort them by priority. 
+			<h3 class="col-md-12 text-center"> Instructions </h3>
+			<p class="text-center"> You can type a task in the field below and hit enter. Or, click on the + symbol anywhere to add a task for each date category. Drag the items to sort them by priority. 
 			</p>
 		</div>
 	</section>
@@ -28,8 +28,10 @@
 	<div class="row">
 			<form class="inputForm form-inline col-md-12 text-center">
 				<input type="text" placeholder="Start typing" name="input-field" class="input-field form-control">
-				<input type="submit" value="Add" name="input-field" class="submit-btn btn btn-default btn-md btn-primary">
+				<input type="submit" value="Add" name="input-field" class="submit-btn btn btn-default btn-lg btn-primary">
+				<button class="delete btn btn-lg btn-danger">Delete</button>
 			</form>
+
 			<p class="warning col-md-12 text-center">Please add a task first</p>
 			
 	</div>
@@ -37,11 +39,9 @@
 
 	<section class="to-do container-fluid">
 		<div class="row">
-			<h2 class="col-md-12 text-center"> Today </h2>
+				<h2 class="col-md-12 text-center"> Tasks / Items </h2>
 				<ul id="sortable" class="selectable col-md-12 text-center">
-					<li> Test task 1</li>
-					<li> Test task 2</li>
-					<li> Test task 3</li>
+
 				</ul>
 		</div>
 	</section>
