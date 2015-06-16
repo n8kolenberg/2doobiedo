@@ -1,5 +1,6 @@
 $(document).ready( function() {
 
+$('input:text').focus();
 
 //Hide initial warning to add task
 $('.warning').hide();
@@ -25,35 +26,27 @@ $('.intro h3').on('click', function() {
 }); //End on click
 
 
-//Use button click to add tasks
-$('.submit-btn').on('click', function (event){
-	event.preventDefault();
-	var $newTask = $('input:text').val();
-	if(!$.trim($newTask)) { 
-		$('.warning').fadeIn(300);
-	} else { 
-		$('.warning').fadeOut(300);
-		$('<li class="tasks" contenteditable="true">'+ $newTask + completeMark + deleteMark + '</li>').prependTo('#sortable')
-		.css({
-			opacity : 0,
-			marginTop : "-10px"
-		})
-		.animate({
-			opacity : 1,
-			marginTop : 0
-		}, 300);
-		$('input:text').val('')
-		prioritize();
-	} //End if statement
-}); //End on click 
-
-
 //Sub Feature of Adding tasks by pressing enter
 $('.input-field').on('keydown', function (event) {
 	if(event.which === 13) {
 		event.preventDefault();
-		$('.submit-btn').click();
-		$('input:text').val('')
+		var $newTask = $('input:text').val();
+		if(!$.trim($newTask)) { 
+			$('.warning').fadeIn(300);
+		} else { 
+			$('.warning').fadeOut(300);
+			$('<li class="tasks" contenteditable="true">'+ $newTask + completeMark + deleteMark + '</li>').prependTo('#sortable')
+			.css({
+				opacity : 0,
+				marginTop : "-10px"
+			})
+			.animate({
+				opacity : 1,
+				marginTop : 0
+			}, 300);
+			prioritize();
+		} //End if statement
+		$('input:text').val('').focus();
 	} //End if statement
 }); // End on keydown
 
@@ -84,7 +77,8 @@ $('.input-field').on('keydown', function (event) {
 //Feature to delete selected tasks
 $('.delete').on('click', function(event) {
 	event.preventDefault();
-	$('.selected').slideUp(200);
+	$('li').fadeOut(1000);
+	$('li').remove();
 });
 
 
