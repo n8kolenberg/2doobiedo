@@ -2,29 +2,66 @@
 	border: 1px red solid;
 }
 */
-html {
-	background-image: url('../img/greyzz1.png');
-}
 
 
 body {
 	box-sizing: border-box;
-	width: 80%;
+	width: 100%;
 	margin: auto;
 	font-family: Helvetica, sans-serif;
 	background-color: rgba(0, 0, 0, 0);
+
 }
 
+
+
+.wrapper {
+	height: 100rem;
+	width: 100%;
+	background-image: url('../img/notebook.jpeg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}
+
+.intro {
+	background-color: rgba(235, 149, 50, 0.5);
+	height: 24rem;
+	position: relative;
+}
+
+.title {
+	margin: auto;
+	position: absolute;
+	top: 7rem;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.title + h3 {
+	margin: auto;
+	position: absolute;
+	top: 13rem;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+
+
 .completeMark {
- 
+ 	cursor: pointer;
+ 	float: left;
+ 	padding-right: 100px;
+
 }
 
 .deleteMark {
-	background-image: url('../img/delete.png');
-	height: 20px;
-	width: 20px;
 	cursor: pointer;
+	float: right;
 }
+
 
 
 .btn {
@@ -104,8 +141,7 @@ for input p
 }
 
 .tasks {
-/*	color: #D35400;
-	background-color: #FDE3A7;*/
+	background-color: rgba(253, 227, 167, 0.5);
 	margin-bottom: 5px;
 	border-radius: 10px;
 	padding: 20px 40px 20px 40px;
@@ -117,22 +153,14 @@ for input p
 ul#sortable {
 	position: absolute;
 	left: 0;
-	top: 75px;
+	top: 45px;
 	right: 0;
 	bottom: 0;
 	cursor: pointer;
 	list-style: none;
 	border-radius: 10px;
-}
-
-.selected {
-	box-shadow: 4px 4px 5px #6C7A89;
-	color: #67809F;
-	background-color: lightgrey;
-	text-decoration: line-through;
-	text-transform: italic;
-	font-size: 2.5rem;
-
+	width: 75%;
+	margin: auto;
 }
 
 
