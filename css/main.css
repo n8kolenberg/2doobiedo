@@ -7,20 +7,24 @@
 body {
 	box-sizing: border-box;
 	width: 100%;
+	height: 100%;
 	margin: auto;
 	font-family: Helvetica, sans-serif;
 	background-color: rgba(0, 0, 0, 0);
+	background-image: url('../img/notebook.jpeg');
+	background-size: cover;
+	background-repeat: repeat-y;
 
 }
 
 
 
 .wrapper {
-	height: 100rem;
 	width: 100%;
+	height: 100rem;
 	background-image: url('../img/notebook.jpeg');
 	background-size: cover;
-	background-repeat: no-repeat;
+	
 	
 }
 
