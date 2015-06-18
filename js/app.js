@@ -109,14 +109,6 @@ $('form').submit(function(event) {
 // 	} //End if else statement
 // }); //End on click
 
-
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 //Make the Task List Sortable
 // $(function() {
 // 	$('#sortable').sortable({
