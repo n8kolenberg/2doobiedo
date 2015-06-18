@@ -7,8 +7,8 @@ $('.warning').hide();
 
 
 //Add icons for completion and deletion
-var completeMark = '<span class="completeMark icon-ok-circled2"></span>'
-var deleteMark = '<span class="deleteMark icon-trash-empty"></span>'
+var completeMark = '<span class="completeMark icon-ok-circled2" contenteditable="false"></span>';
+var deleteMark = '<span class="deleteMark icon-trash-empty" contenteditable="false"></span>';
 
 
 
@@ -21,7 +21,7 @@ $('.input-field').on('keydown', function (event) {
 			$('.warning').fadeIn(300);
 		} else { 
 			$('.warning').fadeOut(300);
-			$('<li class="tasks" contenteditable="true">'+ $newTask + completeMark + deleteMark + '</li>').prependTo('#sortable')
+			$('<li class="tasks" contenteditable="true">'+ completeMark + $newTask + deleteMark + '</li>').prependTo('#sortable')
 			.css({
 				opacity : 0,
 				marginTop : "-10px"
@@ -43,11 +43,17 @@ $('#sortable').on('click', '.completeMark', function(event){
 	if($(this).hasClass('icon-ok-circled2')) {
 		$(this).removeClass('icon-ok-circled2');
 		$(this).addClass('icon-ok-circled');
-		$(this).parent().css('text-decoration', 'line-through');
+		$(this).parent().css({
+			'text-decoration' : 'line-through',
+			'color' : 'rgba(44, 62, 80, 0.5)'
+		}); //End .css
 	} else {
 		$(this).removeClass('icon-ok-circled');
 		$(this).addClass('icon-ok-circled2');
-		$(this).parent().css('text-decoration', 'none');
+		$(this).parent().css({
+			'text-decoration' : 'none',
+			'color' : 'rgba(44, 62, 80, 1)'
+		}); //End .css
 	} //End if statement
 });//End click
 
@@ -61,11 +67,12 @@ $('#sortable').on('click', '.deleteMark', function(event){
 });//End click
 
 
-//Feature to delete selected tasks
-$('.btn').on('submit', '#sortable', function(event) {
+//Feature to delete all tasks
+$('form').submit(function(event) {
 	event.preventDefault();
-	$(this).children().fadeOut(500);
-});
+	$('#sortable').children().fadeOut(500);
+	$('#sortable').children().remove(1000);
+}); //End submit function
 
 
 
@@ -94,11 +101,6 @@ $('.btn').on('submit', '#sortable', function(event) {
 // 		$(this).removeClass('open');
 // 	} //End if else statement
 // }); //End on click
-
-
-
-
-
 
 //Make the Task List Sortable
 // $(function() {
@@ -132,5 +134,17 @@ $('.btn').on('submit', '#sortable', function(event) {
 // 	return false;
 	// }); //End filter
 // } //End prioritize function
+
+
+// Wanted to try to preload images using jQuery
+// var bgImage = new Image();
+// bgImage.src = "img/notebook.jpeg";
+// bgImage.onload();
+// // 	function(){
+// // 	$('.wrapper').css({
+// // 		backgroundImage : url('../img/notebook.jpeg'),
+// // 		backgroundSize : 'cover'
+// // 	});
+// // });//End onload function
 
 }); //End ready
