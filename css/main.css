@@ -1,0 +1,183 @@
+/** {
+	border: 1px red solid;
+}*/
+
+
+
+body {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-family: Helvetica, sans-serif;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url('../img/notebook.jpeg');
+	background-size: cover;
+	background-repeat: repeat-y;
+
+}
+
+
+
+.wrapper {
+	width: 100%;
+	height: 100rem;
+	background-image: url('../img/notebook.jpeg');
+	background-size: cover;
+	
+	
+}
+
+.intro {
+	background-color: rgba(235, 149, 50, 0.5);
+	height: 24rem;
+	position: relative;
+}
+
+.title {
+	margin: auto;
+	position: absolute;
+	top: 7rem;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.title + h3 {
+	margin: auto;
+	position: absolute;
+	top: 13rem;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+
+
+.completeMark {
+ 	cursor: pointer;
+ 	margin-right: 25px;
+ 	display: inline-block;
+
+}
+
+.deleteMark {
+	cursor: pointer;
+	float: right;
+	margin-left: -10px;
+	display: inline-block;
+
+}
+
+
+
+.btn {
+	margin-top: 10px;
+}
+
+.row h3 {
+		margin: auto;
+		width: 100%;
+}
+
+.intro p {
+	margin: 50px auto 20px;
+	width: 80%;
+	max-width: 400px;
+	font-size: 1.5rem;
+	color: grey;
+}
+
+
+/*To add open and close symbol
+for input p
+===========================*/
+.close::before {
+	content: "-  ";
+}
+
+.open::before {
+	content: "+  ";
+}
+
+
+.input {
+	height: 150px;
+}
+
+
+.inputForm {
+	margin: 20px auto 20px;
+}
+
+
+.hide {
+	display: none;
+}
+
+
+.show {
+	display: block;
+}
+
+.extra::after {
+	content: "== ";
+}
+
+/* Priority Styles 
+==================================*/
+.hot {
+	color: #FFF;
+	background-color: #E74C3C;
+}
+
+.medium {
+ 	color: #E87E04;
+ 	background-color: #FDE3A7;
+}
+
+.chill {
+	color: #87D37C;
+ 	background-color: #C8F7C5
+}
+
+/* Completed tasks styles
+==================================*/
+.to-do {
+	position: relative;
+}
+
+.tasks {
+	background-color: rgba(253, 227, 167, 0.5);
+	margin-bottom: 5px;
+	border-radius: 10px;
+	padding: 20px 40px 20px 40px;
+	font-size: 1.65rem;
+	text-align: justify;
+	-webkit-transition: all 100ms ease;
+}
+
+ul#sortable {
+	position: absolute;
+	left: 0;
+	top: 45px;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+	list-style: none;
+	border-radius: 10px;
+	width: 75%;
+	margin: auto;
+}
+
+
+
+@media screen and (min-width: 768px) {
+	.tasks {
+		font-size: 2.5rem;
+	}
+
+	.btn {
+		margin-top: 0;
+	}
+}
