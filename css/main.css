@@ -1,7 +1,12 @@
 /** {
 	border: 1px red solid;
+<<<<<<< HEAD
 }*/
 
+=======
+}
+*/
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 
 
 body {
@@ -56,17 +61,25 @@ body {
 
 .completeMark {
  	cursor: pointer;
+<<<<<<< HEAD
  	margin-right: 25px;
  	display: inline-block;
+=======
+ 	float: left;
+ 	padding-right: 100px;
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 
 }
 
 .deleteMark {
 	cursor: pointer;
 	float: right;
+<<<<<<< HEAD
 	margin-left: -10px;
 	display: inline-block;
 
+=======
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 }
 
 

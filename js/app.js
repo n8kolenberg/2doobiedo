@@ -5,6 +5,7 @@ $('input:text').focus();
 //Hide initial warning to add task
 $('.warning').hide();
 
+<<<<<<< HEAD
 // var bgImage = new Image();
 // bgImage.src = "img/notebook.jpeg";
 // bgImage.onload();
@@ -18,6 +19,12 @@ $('.warning').hide();
 //Add icons for completion and deletion
 var completeMark = '<span class="completeMark icon-ok-circled2" contenteditable="false"></span>'
 var deleteMark = '<span class="deleteMark icon-trash-empty" contenteditable="false"></span>'
+=======
+
+//Add icons for completion and deletion
+var completeMark = '<span class="completeMark icon-ok-circled2"></span>'
+var deleteMark = '<span class="deleteMark icon-trash-empty"></span>'
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 
 
 
@@ -30,7 +37,11 @@ $('.input-field').on('keydown', function (event) {
 			$('.warning').fadeIn(300);
 		} else { 
 			$('.warning').fadeOut(300);
+<<<<<<< HEAD
 			$('<li class="tasks" contenteditable="true">'+ completeMark + $newTask + deleteMark + '</li>').prependTo('#sortable')
+=======
+			$('<li class="tasks" contenteditable="true">'+ $newTask + completeMark + deleteMark + '</li>').prependTo('#sortable')
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 			.css({
 				opacity : 0,
 				marginTop : "-10px"
@@ -71,11 +82,17 @@ $('#sortable').on('click', '.deleteMark', function(event){
 
 
 //Feature to delete selected tasks
+<<<<<<< HEAD
 $('form').submit(function(event) {
 	event.preventDefault();
 	$('#sortable').children().fadeOut(500)
 	$('#sortable').children().remove(1000);
 
+=======
+$(':submit').on('submit', '#sortable', function(event) {
+	event.preventDefault();
+	$(this).children().fadeOut(500);
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 });
 
 
@@ -108,6 +125,12 @@ $('form').submit(function(event) {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 6e31ebf578c34f7bf548d1371742b90fa8066fe2
 //Make the Task List Sortable
 // $(function() {
 // 	$('#sortable').sortable({
