@@ -62,7 +62,7 @@ $('#sortable').on('click', '.deleteMark', function(event){
 
 
 //Feature to delete selected tasks
-$(':submit').on('submit', '#sortable', function(event) {
+$('.btn').on('submit', '#sortable', function(event) {
 	event.preventDefault();
 	$(this).children().fadeOut(500);
 });
