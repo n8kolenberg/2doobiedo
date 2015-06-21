@@ -62,8 +62,8 @@ $('#sortable').on('click', '.deleteMark', function(event){
 	event.preventDefault();
 		$(this).removeClass('icon-trash-empty');
 		$(this).addClass('icon-trash-1');
-		$(this).parent().attr("contenteditable", "false").fadeOut(1000);
-		$(this).parent().remove(100000);
+		$(this).parent().attr("contenteditable", "false").fadeOut(1000).remove(100000);
+		// $(this).parent().remove(100000);
 });//End click
 
 
