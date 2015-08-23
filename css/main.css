@@ -90,8 +90,6 @@ body {
 	display: inline-block;
 }
 
-
-
 .btn {
 	margin-top: 10px;
 }
@@ -118,6 +116,8 @@ input[type="text"] {
 	color: rgb(44, 62, 80);
 	font-family: "Viga", sans-serif;
 	font-size: 2rem;
+	width: 70%;
+	max-width: 600px;
 }
 
 input[type="submit"] {
@@ -132,10 +132,6 @@ input[type="submit"] {
 .input-field {
 	height: 50px;
 	border-radius: 10px;
-}
-
-
-.inputForm {
 	margin: 20px auto 20px;
 }
 
@@ -237,20 +233,9 @@ ul#sortable {
 
 
 
-/* Priority Styles 
-==================================
-.hot {
-	color: #FFF;
-	background-color: #E74C3C;
+/* Check list Styles 
+================================== */
+.checked {
+	text-decoration: line-through;
+	color: rgba(44, 62, 80, 0.5);
 }
-
-.medium {
- 	color: #E87E04;
- 	background-color: #FDE3A7;
-}
-
-.chill {
-	color: #87D37C;
- 	background-color: #C8F7C5
-}
-*/
