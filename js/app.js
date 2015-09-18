@@ -11,120 +11,102 @@ $('.warning').hide();
 * It should give the user a message to enter something if they haven't typed anything in
 */
 
-function InputView() {
-	this.element = $('.input-field');
-	this.button = $('.btn-warning');
-	this.button.click(this.validateInput.bind(this));
-	var self = this.validateInput.bind(this);
-	this.element.keydown(this.validateInput.bind(this));
+
+/* Overall To-do-list App	
+======================================*/
+
+function TodoList () {
+	var self = this;
+	this.inputView = new InputView();
+	this.listView = new ListView();
 }
 
-InputView.prototype.validateInput = function(event) {
-	var inputVal = $('.input-field').val();
-	if($.trim(inputVal) === "") {
+TodoList.prototype.addTask = function(value) {
+	// This is used to add the task to the list view
+	this.listView.addTask(value)
+}
+
+
+
+/* InputView
+======================================*/
+
+function InputView () {
+	var self = this;
+	this.input = $("input:text");
+	this.button = $('#button');
+	this.button.click(this.validateInput.bind(this));
+	this.input.keydown(function(event){
+		if(event.which == 13) {
+			self.button.click();
+		}
+	});
+}
+
+
+InputView.prototype.validateInput = function() {
+	var inputVal = $("input:text").val();
+	if ($.trim(inputVal) == "") {
 		$('.warning').fadeIn(300);
 	} else {
 		$('.warning').fadeOut(300);
-		listView.addListItem(inputVal);
+		// Add the item to the list
+		todoList.addTask(inputVal);
 	}
-}; // End validateInput function
+	
+};
 
-var inputView = new InputView();
 
-//----------------------------------
-//----------------------------------
+/* ListView
+======================================*/
 
-function ListView() {
-	this.element = $('#sortable');
-	this.element.on('click', '.icon-trash-empty', this.deleteListItem.bind(this));
-	this.element.on('click', '.icon-ok-circled2', this.checkListItem.bind(this))
+function ListView () {
+	this.taskListUl = $('#taskList');
+	this.taskListUl.on('click', 'span.completeMark', this.checkTask.bind(this));
+	this.taskListUl.on('click', 'span.deleteMark', this.deleteTask.bind(this));
 }
 
-ListView.prototype.addListItem = function(value) {
-	//Add icons for completion and deletion
-	var completeMark = '<span class="completeMark icon-ok-circled2" contenteditable="false"></span>';
-	var deleteMark = '<span class="deleteMark icon-trash-empty" contenteditable="false"></span>';
-	var listItem = "<li class='tasks' contenteditable='true'>";
-	listItem += completeMark;
-	listItem += value;
-	listItem += deleteMark + "</li>";
-	$('#sortable').append(listItem)
+ListView.prototype.addTask = function(value) {
+	// Adding the checked and delete icons
+	var completeMark = "<span class='completeMark icon-ok-circled2' contenteditable='false'></span>";
+	var deleteMark = "<span class='deleteMark icon-trash-empty' contenteditable='false'></span>";
+	var task = "<li class='tasks' contenteditable='true'>";
+	task += completeMark + value + deleteMark; 
+	task += "</li>";
+	// Prepend the tasks to the taskList ul
+	this.taskListUl.prepend(task).find('li')
 	.css({
-		opacity : 0,
-		marginTop : "-10px"
+		opacity: 0,
+		marginTop: "-10px"
 	})
 	.animate({
-		opacity : 1,
-		marginTop : 0
-	}, 300); //End append with animation
-	$('input:text').val('').focus();
-}
+		opacity: 1,
+		marginTop: 0
+	}, 100); // End prepend and smooth list item entry
+	// Put the focus back on the input and wipe previous entry
+	$('input:text').val("").focus();
 
-ListView.prototype.checkListItem = function(event) {
-	$(event.target).closest('span').toggleClass('icon-ok-circled2').toggleClass('icon-ok-circled')
-		.closest('li')
-		.toggleClass('checked');
-}
-
-ListView.prototype.deleteListItem = function() {
-	$(event.target).closest('li').attr("contenteditable", "false").fadeOut('fast').remove(10000);
-}
-
-var listView = new ListView();
+};// End addTask function
 
 
+// Check the list items
+ListView.prototype.checkTask = function (event) {
+	$(event.target).closest('span').toggleClass('icon-ok-circled').toggleClass('icon-ok-circled2')
+				.closest('li').toggleClass('checked');
+}; // End checkTask function
 
-//Controller
+// Delete the list items
+ListView.prototype.deleteTask = function () {
+	$(event.target).closest('span.deleteMark').toggleClass('icon-trash-1').toggleClass('icon-trash-empty')
+				.closest('li.tasks').fadeOut(200, function() {
+					this.remove();
+				}); // End callback function
 
-// var completeMark = '<span class="completeMark icon-ok-circled2" contenteditable="false"></span>';
-// var deleteMark = '<span class="deleteMark icon-trash-empty" contenteditable="false"></span>';
-
-// //Sub Feature of Adding tasks by pressing enter
-// $('.input-field').on('keydown', function (event) {
-// 	if(event.which === 13) {
-// 		event.preventDefault();
-// 		var $newTask = $('input:text').val();
-// 		if(!$.trim($newTask)) { 
-// 			$('.warning').fadeIn(300);
-// 		} else { 
-// 			$('.warning').fadeOut(300);
-// 			$('<li class="tasks" contenteditable="true">'+ completeMark + $newTask + deleteMark + '</li>').prependTo('#sortable')
-// 			.css({
-// 				opacity : 0,
-// 				marginTop : "-10px"
-// 			})
-// 			.animate({
-// 				opacity : 1,
-// 				marginTop : 0
-// 			}, 300);
-// 			$('input:text').val('').focus();
-// 		} //End if statement to determine whether to show warning
-// 	} //End if statement to determine whether Enter has been pressed
-// }); // End on keydown
+}; // End deleteTask function
 
 
 
-// //Complete the tasks
-// $('#sortable').on('click', '.completeMark', function(event){
-// 		$(event.target).closest('span').toggleClass('icon-ok-circled2').toggleClass('icon-ok-circled')
-// 		.closest('li')
-// 		.toggleClass('checked');
-// });//End click
 
-// //Delete the tasks
-// $('#sortable').on('click', '.deleteMark', function(event){
-// 	event.preventDefault();
-// 		$(this).removeClass('icon-trash-empty');
-// 		$(this).addClass('icon-trash-1');
-// 		$(this).parent().attr("contenteditable", "false").fadeOut(1000).remove(100000);
-// });//End click
-
-
-// //Feature to delete all tasks
-// $('form').submit(function(event) {
-// 	event.preventDefault();
-// 	$('#sortable').children().fadeOut(500);
-// 	$('#sortable').children().remove(1000);
-// }); //End submit function
-
+// Initialize the app
+var todoList = new TodoList();
 // }); //End ready

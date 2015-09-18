@@ -154,7 +154,7 @@ input[type="submit"] {
 	-webkit-transition: all 100ms ease;
 }
 
-ul#sortable {
+ul#taskList {
 	position: absolute;
 	left: 0;
 	top: 50px;
