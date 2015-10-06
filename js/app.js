@@ -147,6 +147,8 @@ function ListView() {
 	this.taskListUl = $('#taskList')
 	this.taskListUl.on('click', 'span.completeMark', this.checkItem.bind(this));
 	this.taskListUl.on('click', 'span.deleteMark', this.removeItem.bind(this));
+	// The following line calls the function that needs to run to save the edited content to localStorage
+	this.taskListUl.on('input', 'li.tasks', this.editItem.bind(this)); 
 }
 
 //ListView methods on the prototype
@@ -172,6 +174,10 @@ ListView.prototype.addItem = function(value) {
 	$('input:text').val("").focus();
 }; // End addItem();
 
+ListView.prototype.editItem = function() {
+	console.log('You changed me');
+};
+
 ListView.prototype.removeItem = function(event) {
 	$(event.target).closest('span.deleteMark').toggleClass('icon-trash-1').toggleClass('icon-trash-empty')
 	.closest('li').fadeOut(function(){
@@ -185,12 +191,19 @@ ListView.prototype.removeItem = function(event) {
 };
 
 ListView.prototype.removeCompleted = function() {
-	$checkedTasks = $('li.checked');
-	$checkedTasks.each(function(index){
+	var checkedTasks = document.getElementsByClassName('checked');
+	/*
+	  For all the checked list items, we need to find their index in the 
+	  localStorage array so we can remove them once the user clicks removeCompleted
+	*/  
+	for (var i = 0; i < checkedTasks.length; i++) {
+		var checkIndex = checkedTasks[i].textContent;
+		var toSplice = todoListApp.localStoredItems.localItems.indexOf(checkIndex);
+		todoListApp.localStoredItems.removeItem(toSplice);
+	}
 			
-			todoListApp.localStoredItems.removeItem(index);
-	}) // End each function to remove each checked item from localStorage
-	.fadeOut(function(){
+	var $checkedItems = $('li.checked');
+	$checkedItems.fadeOut(function(){
 		$(this).remove();
 		todoListApp.calcItemsLeft();
 		//Gotta delete this from localStorage
