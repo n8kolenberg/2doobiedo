@@ -148,7 +148,7 @@ function ListView() {
 	this.taskListUl.on('click', 'span.completeMark', this.checkItem.bind(this));
 	this.taskListUl.on('click', 'span.deleteMark', this.removeItem.bind(this));
 	// The following line calls the function that needs to run to save the edited content to localStorage
-	this.taskListUl.on('input', 'li.tasks', this.editItem.bind(this)); 
+	this.taskListUl.on('keyup', 'li.tasks', this.editItem.bind(this)); 
 }
 
 //ListView methods on the prototype
@@ -174,8 +174,17 @@ ListView.prototype.addItem = function(value) {
 	$('input:text').val("").focus();
 }; // End addItem();
 
-ListView.prototype.editItem = function() {
-	console.log('You changed me');
+ListView.prototype.editItem = function(event) {
+	var $editItem, editItemIndex, editItemValue;
+	$editItem = $(event.target).closest('li');
+	// Look up the value after the keyup and store in variable
+	editItemValue = $editItem.text();
+	// Check the index of that value within localStorage
+	editItemIndex = $editItem.index();
+
+	// Delete the old value and add the new value into localStorage, and then save the changes
+	todoListApp.localStoredItems.localItems.splice(editItemIndex, 1, editItemValue);
+	todoListApp.localStoredItems.save();
 };
 
 ListView.prototype.removeItem = function(event) {
@@ -186,7 +195,6 @@ ListView.prototype.removeItem = function(event) {
 		todoListApp.localStoredItems.removeItem(itemIndex);
 		$(this).remove();
 		todoListApp.calcItemsLeft();
-		//Gotta delete this from localStorage
 	});
 };
 
@@ -206,13 +214,12 @@ ListView.prototype.removeCompleted = function() {
 	$checkedItems.fadeOut(function(){
 		$(this).remove();
 		todoListApp.calcItemsLeft();
-		//Gotta delete this from localStorage
 	});
 };
 
 ListView.prototype.removeAll = function() {
 	$allTasks = $('li');
-	$allTasks.fadeOut(function(){
+	$allTasks.fadeOut(function() {
 		$(this).remove();
 		todoListApp.calcItemsLeft();
 	});
@@ -222,7 +229,7 @@ ListView.prototype.checkItem = function(event) {
 	$(event.target).closest('span').toggleClass('icon-ok-circled').toggleClass('icon-ok-circled2')
 	.closest('li').toggleClass('checked');
 	todoListApp.calcItemsLeft();
-}
+};
 
 // Initiate app
 var todoListApp = new TodoList();
