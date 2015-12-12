@@ -1,0 +1,39 @@
+
+/*Defaults*/
+$default-space: 20px;
+
+* {
+	border: 1px indianred solid;
+	box-sizing: border-box;
+}
+
+/* Input field and buttons */
+.row {
+	margin-bottom: $default-space / 2;
+}
+
+
+.input-field {
+	padding: $default-space * 1.25;
+	outline: none;
+	font-size: $default-space * 1.3;
+	border-radius: $default-space;
+}
+
+.btn {
+	border-radius: $default-space * 0.8;
+	@media (min-width: 768px) {
+		min-width: 220px;
+		max-width: 275px;
+	}
+}
+
+.flex-container {
+	@media (min-width: 768px) {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	 }
+	 max-width: 90%;
+	 margin: 10px auto;
+}
